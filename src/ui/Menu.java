@@ -3,6 +3,7 @@ package ui;
 import java.util.Scanner;
 
 import Exception.AgeE;
+import Exception.DayE;
 import model.MiniMarket;
 import model.TypeDocument;
 
@@ -79,10 +80,14 @@ public class Menu {
 		long id = selectID();
 		try {
 			mm.addPerson(tp, id);
+			mm.count++;
 			return "Se ha agregado correctamente";
 		} catch (AgeE e) {
 			mm.count++;
 			return "TI no se puede agregar";
+		} catch (DayE e) {
+			mm.count++;
+			return "A esta persona no le corresponde salir hoy";
 		}
 	}
 

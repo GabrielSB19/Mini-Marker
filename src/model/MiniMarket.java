@@ -1,8 +1,10 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import Exception.AgeE;
+import Exception.DayE;
 
 public class MiniMarket {
 	
@@ -17,11 +19,15 @@ public class MiniMarket {
 		return listPerson;
 	}
 	
-	public void addPerson(TypeDocument tp, long id) throws AgeE{
+	public void addPerson(TypeDocument tp, long id) throws AgeE, DayE{
 		if (tp == TypeDocument.TI) {
 			throw new AgeE(TypeDocument.TI);
 		}
+		if (!condition2(id)) {
+			throw new DayE(getDay(), penultimateId(id));
+		}
 		listPerson.add(new Person(id, tp));
+		System.out.println(listPerson.size());
 	}
 	
 	public TypeDocument getTp (int index) {
@@ -41,5 +47,30 @@ public class MiniMarket {
 			break;
 		}
 		return newTp;
+	}
+
+	public int getDay() {
+		LocalDate date = LocalDate.now();
+		String dateString = date.toString();
+		String [] dateSplit = dateString.split("\\-");
+		int day = Integer.parseInt(dateSplit[2]);
+		return day;
+	}
+	
+	public int penultimateId(long id) {
+		String test = id+"";
+		int last = 0;
+		for (int i = 0; i < test.length()-1; i++) {
+			last = Integer.parseInt(test.charAt(i)+"");
+		}
+		return last;
+	}
+	
+	public boolean condition2(long id) {
+		if (getDay()%2 == 0 && penultimateId(id)%2 != 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
