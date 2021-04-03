@@ -89,6 +89,7 @@ class MiniMarketTest {
 		} else {
 			id = 21118442;
 		}
+		
 		try {
 			mm.addPerson(tp, id);
 		} catch(AgeE e) {
@@ -114,6 +115,7 @@ class MiniMarketTest {
 		} else {
 			id = 21118452;
 		}
+		
 		try {
 			mm.addPerson(tp, id);
 		} catch (DayE e) {
