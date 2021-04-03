@@ -84,10 +84,10 @@ public class Menu {
 			return "Se ha agregado correctamente";
 		} catch (AgeE e) {
 			mm.count++;
-			return "TI no se puede agregar";
+			return "TI no se puede agregar, es menor de edad\nNo se agrego";
 		} catch (DayE e) {
 			mm.count++;
-			return "A esta persona no le corresponde salir hoy";
+			return "A esta persona no le corresponde salir hoy, no cumple con las condiciones del gobierno\nNo se agrego";
 		}
 	}
 

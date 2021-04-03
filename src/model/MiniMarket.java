@@ -27,7 +27,6 @@ public class MiniMarket {
 			throw new DayE(getDay(), penultimateId(id));
 		}
 		listPerson.add(new Person(id, tp));
-		System.out.println(listPerson.size());
 	}
 	
 	public TypeDocument getTp (int index) {
@@ -67,7 +66,7 @@ public class MiniMarket {
 	}
 	
 	public boolean condition2(long id) {
-		if (getDay()%2 == 0 && penultimateId(id)%2 != 0) {
+		if ((getDay()%2 == 0 && penultimateId(id)%2 != 0) || (getDay()%2 != 0 && penultimateId(id)%2 == 0)) {
 			return true;
 		} else {
 			return false;
